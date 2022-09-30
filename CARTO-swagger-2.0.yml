@@ -1,0 +1,5572 @@
+#  ___ _            _ _    _ _    __
+# / __(_)_ __  _ __| (_)__(_) |_ /_/
+# \__ \ | '  \| '_ \ | / _| |  _/ -_)
+# |___/_|_|_|_| .__/_|_\__|_|\__\___|
+#             |_| Module: CARTO 1.2
+paths:
+  /rest/CartoComponent:
+    get:
+      summary: Search CartoComponent business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocomponent-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoComponent'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoCmpAppId
+        description: Search filter for Application
+        type: string
+        required: false
+      - in: query
+        name: cartoCmpAppId__cartoAppId
+        description: Search filter for Application Identifier
+        type: string
+        required: false
+      - in: query
+        name: cartoCmpAppId__cartoAppName
+        description: Search filter for Application Name
+        type: string
+        required: false
+      - in: query
+        name: cartoCmpName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      tags:
+      - CartoComponent
+  /rest/CartoCountry/{row_id}:
+    post:
+      summary: Create a new CartoCountrybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocountry-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCountry'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoCountry'
+        in: body
+        name: body
+      tags:
+      - CartoCountry
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoCountry business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocountry-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCountry'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoCountry
+    delete:
+      summary: Delete a CartoCountry business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocountry-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoCountry
+    put:
+      summary: Update a CartoCountrybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocountry-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCountry'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoCountry'
+        in: body
+        name: body
+      tags:
+      - CartoCountry
+      consumes:
+      - application/json
+  /login:
+    get:
+      summary: Login (obtain bearer token)
+      security:
+      - basicAuth: []
+      produces:
+      - text/plain
+      - application/json
+      operationId: login
+      responses:
+        '200':
+          description: Successful login
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      parameters:
+      - in: query
+        name: _output
+        description: Optional output format
+        type: string
+        required: false
+        enum:
+        - json
+        - oauth2
+        - token
+      tags:
+      - session
+  /rest/CartoAppFct/{row_id}:
+    post:
+      summary: Create a new CartoAppFctbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappfct-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoAppFct'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoAppFct'
+        in: body
+        name: body
+      tags:
+      - CartoAppFct
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoAppFct business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappfct-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoAppFct'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoAppFct
+    delete:
+      summary: Delete a CartoAppFct business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappfct-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoAppFct
+    put:
+      summary: Update a CartoAppFctbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappfct-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoAppFct'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoAppFct'
+        in: body
+        name: body
+      tags:
+      - CartoAppFct
+      consumes:
+      - application/json
+  /rest/CartoApplication/{row_id}:
+    post:
+      summary: Create a new CartoApplicationbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoapplication-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoApplication'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoApplication'
+        in: body
+        name: body
+      tags:
+      - CartoApplication
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoApplication business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoapplication-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoApplication'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoApplication
+    delete:
+      summary: Delete a CartoApplication business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoapplication-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoApplication
+    put:
+      summary: Update a CartoApplicationbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoapplication-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoApplication'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoApplication'
+        in: body
+        name: body
+      tags:
+      - CartoApplication
+      consumes:
+      - application/json
+  /rest/CartoFctAct/{row_id}:
+    post:
+      summary: Create a new CartoFctActbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartofctact-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoFctAct'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoFctAct'
+        in: body
+        name: body
+      tags:
+      - CartoFctAct
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoFctAct business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartofctact-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoFctAct'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoFctAct
+    delete:
+      summary: Delete a CartoFctAct business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartofctact-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoFctAct
+    put:
+      summary: Update a CartoFctActbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartofctact-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoFctAct'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoFctAct'
+        in: body
+        name: body
+      tags:
+      - CartoFctAct
+      consumes:
+      - application/json
+  /rest/CartoAppUsr/{row_id}:
+    post:
+      summary: Create a new CartoAppUsrbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappusr-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoAppUsr'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoAppUsr'
+        in: body
+        name: body
+      tags:
+      - CartoAppUsr
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoAppUsr business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappusr-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoAppUsr'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoAppUsr
+    delete:
+      summary: Delete a CartoAppUsr business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappusr-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoAppUsr
+    put:
+      summary: Update a CartoAppUsrbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappusr-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoAppUsr'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoAppUsr'
+        in: body
+        name: body
+      tags:
+      - CartoAppUsr
+      consumes:
+      - application/json
+  /rest/CartoBusinessConcept/{row_id}:
+    post:
+      summary: Create a new CartoBusinessConceptbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusinessconcept-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoBusinessConcept'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoBusinessConcept'
+        in: body
+        name: body
+      tags:
+      - CartoBusinessConcept
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoBusinessConcept business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusinessconcept-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoBusinessConcept'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoBusinessConcept
+    delete:
+      summary: Delete a CartoBusinessConcept business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusinessconcept-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoBusinessConcept
+    put:
+      summary: Update a CartoBusinessConceptbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusinessconcept-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoBusinessConcept'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoBusinessConcept'
+        in: body
+        name: body
+      tags:
+      - CartoBusinessConcept
+      consumes:
+      - application/json
+  /rest/CartoFunction/{row_id}:
+    post:
+      summary: Create a new CartoFunctionbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartofunction-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoFunction'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoFunction'
+        in: body
+        name: body
+      tags:
+      - CartoFunction
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoFunction business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartofunction-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoFunction'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoFunction
+    delete:
+      summary: Delete a CartoFunction business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartofunction-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoFunction
+    put:
+      summary: Update a CartoFunctionbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartofunction-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoFunction'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoFunction'
+        in: body
+        name: body
+      tags:
+      - CartoFunction
+      consumes:
+      - application/json
+  /rest/CartoTechnology/{row_id}:
+    post:
+      summary: Create a new CartoTechnologybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartotechnology-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoTechnology'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoTechnology'
+        in: body
+        name: body
+      tags:
+      - CartoTechnology
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoTechnology business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartotechnology-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoTechnology'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoTechnology
+    delete:
+      summary: Delete a CartoTechnology business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartotechnology-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoTechnology
+    put:
+      summary: Update a CartoTechnologybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartotechnology-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoTechnology'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoTechnology'
+        in: body
+        name: body
+      tags:
+      - CartoTechnology
+      consumes:
+      - application/json
+  /rest/CartoBusinessCategory/{row_id}:
+    post:
+      summary: Create a new CartoBusinessCategorybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusinesscategory-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoBusinessCategory'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoBusinessCategory'
+        in: body
+        name: body
+      tags:
+      - CartoBusinessCategory
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoBusinessCategory business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusinesscategory-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoBusinessCategory'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoBusinessCategory
+    delete:
+      summary: Delete a CartoBusinessCategory business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusinesscategory-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoBusinessCategory
+    put:
+      summary: Update a CartoBusinessCategorybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusinesscategory-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoBusinessCategory'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoBusinessCategory'
+        in: body
+        name: body
+      tags:
+      - CartoBusinessCategory
+      consumes:
+      - application/json
+  /rest/CartoFctAct:
+    get:
+      summary: Search CartoFctAct business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartofctact-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoFctAct'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoFctactFctId
+        description: Search filter for Function ID
+        type: string
+        required: false
+      - in: query
+        name: cartoFctactFctId__cartoFctName
+        description: Search filter for Function name
+        type: string
+        required: false
+      - in: query
+        name: cartoFctactActId
+        description: Search filter for Activity ID
+        type: string
+        required: false
+      - in: query
+        name: cartoFctactActId__cartoActName
+        description: Search filter for Activity name
+        type: string
+        required: false
+      tags:
+      - CartoFctAct
+  /rest/CartoItDomain/{row_id}:
+    post:
+      summary: Create a new CartoItDomainbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoitdomain-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoItDomain'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoItDomain'
+        in: body
+        name: body
+      tags:
+      - CartoItDomain
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoItDomain business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoitdomain-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoItDomain'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoItDomain
+    delete:
+      summary: Delete a CartoItDomain business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoitdomain-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoItDomain
+    put:
+      summary: Update a CartoItDomainbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoitdomain-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoItDomain'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoItDomain'
+        in: body
+        name: body
+      tags:
+      - CartoItDomain
+      consumes:
+      - application/json
+  /rest/CartoBusiness:
+    get:
+      summary: Search CartoBusiness business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusiness-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoBusiness'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoBusName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoBusBuscatId
+        description: Search filter for Business Category
+        type: string
+        required: false
+      - in: query
+        name: cartoBusBuscatId__cartoBuscatName
+        description: Search filter for Business Category Name
+        type: string
+        required: false
+      - in: query
+        name: cartoDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      tags:
+      - CartoBusiness
+  /rest/CartoCountry:
+    get:
+      summary: Search CartoCountry business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocountry-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoCountry'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: _indexsearch
+        description: Index search query
+        type: string
+        required: false
+      - in: query
+        name: cartoCtyName
+        description: Search filter for Name
+        type: string
+        required: false
+      tags:
+      - CartoCountry
+  /rest/CartoAppUsr:
+    get:
+      summary: Search CartoAppUsr business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappusr-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoAppUsr'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoAppusrAppId
+        description: Search filter for ID Application
+        type: string
+        required: false
+      - in: query
+        name: cartoAppusrAppId__cartoAppId
+        description: Search filter for Application Identifier
+        type: string
+        required: false
+      - in: query
+        name: cartoAppusrUsrId
+        description: Search filter for ID User
+        type: string
+        required: false
+      - in: query
+        name: cartoAppusrUsrId__usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      - in: query
+        name: cartoAppusrRole
+        description: Search filter for Role
+        type: string
+        required: false
+        enum:
+        - SPOC
+        - PO
+      tags:
+      - CartoAppUsr
+  /rest/CartoTechnology:
+    get:
+      summary: Search CartoTechnology business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartotechnology-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoTechnology'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoTechName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoTechVersion
+        description: Search filter for Version
+        type: string
+        required: false
+      - in: query
+        name: cartoTechEos
+        description: Search filter for EOS
+        type: string
+        required: false
+      - in: query
+        name: cartoDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      tags:
+      - CartoTechnology
+  /rest/CartoUser/{row_id}:
+    post:
+      summary: Create a new CartoUserbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartouser-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoUser'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoUser'
+        in: body
+        name: body
+      tags:
+      - CartoUser
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoUser business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartouser-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoUser'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoUser
+    delete:
+      summary: Delete a CartoUser business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartouser-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoUser
+    put:
+      summary: Update a CartoUserbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartouser-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoUser'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoUser'
+        in: body
+        name: body
+      tags:
+      - CartoUser
+      consumes:
+      - application/json
+  /rest/CartoAppFct:
+    get:
+      summary: Search CartoAppFct business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappfct-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoAppFct'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoAppfctAppId
+        description: Search filter for Application ID
+        type: string
+        required: false
+      - in: query
+        name: cartoAppfctAppId__cartoAppId
+        description: Search filter for Application ID
+        type: string
+        required: false
+      - in: query
+        name: cartoAppfctFctId
+        description: Search filter for Function ID
+        type: string
+        required: false
+      - in: query
+        name: cartoAppfctFctId__cartoFctName
+        description: Search filter for Function name
+        type: string
+        required: false
+      tags:
+      - CartoAppFct
+  /rest/CartoCtyApp:
+    get:
+      summary: Search CartoCtyApp business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoctyapp-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoCtyApp'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoCtyappCtyId
+        description: Search filter for Country ID
+        type: string
+        required: false
+      - in: query
+        name: cartoCtyappCtyId__cartoCtyName
+        description: Search filter for Country ID Name
+        type: string
+        required: false
+      - in: query
+        name: cartoCtyappAppId
+        description: Search filter for App ID
+        type: string
+        required: false
+      - in: query
+        name: cartoCtyappAppId__cartoAppId
+        description: Search filter for App ID Identifier
+        type: string
+        required: false
+      tags:
+      - CartoCtyApp
+  /rest/CartoAppBuscon:
+    get:
+      summary: Search CartoAppBuscon business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappbuscon-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoAppBuscon'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoAppbusconType
+        description: Search filter for Type
+        type: string
+        required: false
+        enum:
+        - PRN
+        - SCN
+      - in: query
+        name: cartoAppbusconAppId
+        description: Search filter for ID Application
+        type: string
+        required: false
+      - in: query
+        name: cartoAppbusconAppId__cartoAppId
+        description: Search filter for Application Identifier
+        type: string
+        required: false
+      - in: query
+        name: cartoAppbusconAppId__cartoAppName
+        description: Search filter for Name of the application
+        type: string
+        required: false
+      - in: query
+        name: cartoAppbusconBusconId
+        description: Search filter for ID Business concept
+        type: string
+        required: false
+      - in: query
+        name: cartoAppbusconBusconId__cartoBusconKdId
+        description: Search filter for ID Business concept Key Data
+        type: string
+        required: false
+      - in: query
+        name: cartoAppbusconBusconId__cartoBusconKdId__cartoKdName
+        description: Search filter for ID Business concept Key Data Name
+        type: string
+        required: false
+      - in: query
+        name: cartoAppbusconBusconId__cartoBusconName
+        description: Search filter for Business concept name
+        type: string
+        required: false
+      tags:
+      - CartoAppBuscon
+  /rest/CartoAppBuscon/{row_id}:
+    post:
+      summary: Create a new CartoAppBusconbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappbuscon-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoAppBuscon'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoAppBuscon'
+        in: body
+        name: body
+      tags:
+      - CartoAppBuscon
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoAppBuscon business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappbuscon-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoAppBuscon'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoAppBuscon
+    delete:
+      summary: Delete a CartoAppBuscon business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappbuscon-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoAppBuscon
+    put:
+      summary: Update a CartoAppBusconbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoappbuscon-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoAppBuscon'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoAppBuscon'
+        in: body
+        name: body
+      tags:
+      - CartoAppBuscon
+      consumes:
+      - application/json
+  /rest/CartoKeyData/{row_id}:
+    post:
+      summary: Create a new CartoKeyDatabusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartokeydata-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoKeyData'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoKeyData'
+        in: body
+        name: body
+      tags:
+      - CartoKeyData
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoKeyData business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartokeydata-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoKeyData'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoKeyData
+    delete:
+      summary: Delete a CartoKeyData business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartokeydata-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoKeyData
+    put:
+      summary: Update a CartoKeyDatabusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartokeydata-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoKeyData'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoKeyData'
+        in: body
+        name: body
+      tags:
+      - CartoKeyData
+      consumes:
+      - application/json
+  /rest/CartoComponent/{row_id}:
+    post:
+      summary: Create a new CartoComponentbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocomponent-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoComponent'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoComponent'
+        in: body
+        name: body
+      tags:
+      - CartoComponent
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoComponent business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocomponent-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoComponent'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoComponent
+    delete:
+      summary: Delete a CartoComponent business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocomponent-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoComponent
+    put:
+      summary: Update a CartoComponentbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocomponent-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoComponent'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoComponent'
+        in: body
+        name: body
+      tags:
+      - CartoComponent
+      consumes:
+      - application/json
+  /rest/CartoBusinessConcept:
+    get:
+      summary: Search CartoBusinessConcept business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusinessconcept-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoBusinessConcept'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoBusconName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: cartoBusconKdId
+        description: Search filter for Key Data
+        type: string
+        required: false
+      - in: query
+        name: cartoBusconKdId__cartoKdName
+        description: Search filter for Key Data Name
+        type: string
+        required: false
+      tags:
+      - CartoBusinessConcept
+  /logout:
+    get:
+      summary: Logout (revoke bearer token)
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: logout
+      responses:
+        '200':
+          description: Successfull logout
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      tags:
+      - session
+  /rest/CartoFunction:
+    get:
+      summary: Search CartoFunction business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartofunction-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoFunction'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoFctName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      tags:
+      - CartoFunction
+  /rest/CartoItDomain:
+    get:
+      summary: Search CartoItDomain business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoitdomain-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoItDomain'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoDomName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      tags:
+      - CartoItDomain
+  /rest/CartoServer/{row_id}:
+    post:
+      summary: Create a new CartoServerbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoserver-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoServer'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoServer'
+        in: body
+        name: body
+      tags:
+      - CartoServer
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoServer business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoserver-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoServer'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoServer
+    delete:
+      summary: Delete a CartoServer business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoserver-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoServer
+    put:
+      summary: Update a CartoServerbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoserver-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoServer'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoServer'
+        in: body
+        name: body
+      tags:
+      - CartoServer
+      consumes:
+      - application/json
+  /rest/CartoCmpSrv/{row_id}:
+    post:
+      summary: Create a new CartoCmpSrvbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocmpsrv-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCmpSrv'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoCmpSrv'
+        in: body
+        name: body
+      tags:
+      - CartoCmpSrv
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoCmpSrv business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocmpsrv-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCmpSrv'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoCmpSrv
+    delete:
+      summary: Delete a CartoCmpSrv business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocmpsrv-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoCmpSrv
+    put:
+      summary: Update a CartoCmpSrvbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocmpsrv-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCmpSrv'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoCmpSrv'
+        in: body
+        name: body
+      tags:
+      - CartoCmpSrv
+      consumes:
+      - application/json
+  /rest/CartoActivity:
+    get:
+      summary: Search CartoActivity business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoactivity-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoActivity'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoActName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      tags:
+      - CartoActivity
+  /rest/CartoKeyData:
+    get:
+      summary: Search CartoKeyData business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartokeydata-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoKeyData'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoKdName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      tags:
+      - CartoKeyData
+  /rest/CartoCmpTech/{row_id}:
+    post:
+      summary: Create a new CartoCmpTechbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocmptech-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCmpTech'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoCmpTech'
+        in: body
+        name: body
+      tags:
+      - CartoCmpTech
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoCmpTech business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocmptech-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCmpTech'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoCmpTech
+    delete:
+      summary: Delete a CartoCmpTech business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocmptech-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoCmpTech
+    put:
+      summary: Update a CartoCmpTechbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocmptech-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCmpTech'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoCmpTech'
+        in: body
+        name: body
+      tags:
+      - CartoCmpTech
+      consumes:
+      - application/json
+  /rest/CartoUser:
+    get:
+      summary: Search CartoUser business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartouser-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoUser'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: usr_image_id
+        description: Search filter for Picture
+        type: string
+        required: false
+      - in: query
+        name: usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      - in: query
+        name: usr_first_name
+        description: Search filter for First name
+        type: string
+        required: false
+      - in: query
+        name: usr_last_name
+        description: Search filter for Last name
+        type: string
+        required: false
+      - in: query
+        name: usr_lang
+        description: Search filter for Language
+        type: string
+        required: false
+        enum:
+        - ENU
+        - FRA
+      - in: query
+        name: usr_email
+        description: Search filter for Email address
+        type: string
+        required: false
+      - in: query
+        name: usr_cell_num
+        description: Search filter for Mobile/cellular phone number
+        type: string
+        required: false
+      - in: query
+        name: usr_active
+        description: Search filter for Active
+        type: string
+        required: false
+        enum:
+        - '0'
+        - '1'
+        - '2'
+        - '3'
+      - in: query
+        name: usr_home_id
+        description: Search filter for Home page
+        type: string
+        required: false
+      - in: query
+        name: usr_home_id__viw_name
+        description: Search filter for Home page Name
+        type: string
+        required: false
+      - in: query
+        name: row_module_id
+        description: Search filter for Module
+        type: string
+        required: false
+      - in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Module name
+        type: string
+        required: false
+      tags:
+      - CartoUser
+  /:
+    get:
+      summary: Get user session information
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: info
+      responses:
+        '200':
+          description: Success in getting user session information
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      parameters:
+      - in: query
+        name: texts
+        description: Texts?
+        type: boolean
+        required: false
+      tags:
+      - session
+  /rest/CartoApplication:
+    get:
+      summary: Search CartoApplication business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoapplication-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoApplication'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoAppId
+        description: Search filter for Identifier
+        type: string
+        required: false
+      - in: query
+        name: cartoAppName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoAppDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: cartoAppVersion
+        description: Search filter for Version
+        type: string
+        required: false
+      - in: query
+        name: cartoAppInternetFacing
+        description: Search filter for Internet facing
+        type: boolean
+        required: false
+      - in: query
+        name: cartoAppPersonalData
+        description: Search filter for Personal data
+        type: boolean
+        required: false
+      - in: query
+        name: cartoAppCiatConf
+        description: Search filter for Confidentiality
+        type: string
+        required: false
+        enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+      - in: query
+        name: cartoAppCiatIntegrity
+        description: Search filter for Integrity
+        type: string
+        required: false
+        enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+      - in: query
+        name: cartoAppCiatAvailability
+        description: Search filter for Availability
+        type: string
+        required: false
+        enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+      - in: query
+        name: cartoAppRto
+        description: Search filter for RTO
+        type: string
+        required: false
+        enum:
+        - MORE24
+        - 8TO24
+        - 4TO8
+        - LESS4
+      - in: query
+        name: cartoAppRpo
+        description: Search filter for RPO
+        type: string
+        required: false
+        enum:
+        - MORE24
+        - 8TO24
+        - 4TO8
+        - LESS4
+      - in: query
+        name: cartoAppCiatLast
+        description: Search filter for Last CIAT
+        type: string
+        required: false
+      - in: query
+        name: cartoAppClass
+        description: Search filter for Class
+        type: string
+        required: false
+        enum:
+        - '1'
+        - '2'
+        - '3'
+      - in: query
+        name: cartoAppAuthentication
+        description: Search filter for Authentication
+        type: string
+        required: false
+        enum:
+        - SSO
+        - SSOITG
+        - SSOCIB
+        - ADFSBNPPRE
+        - ADFSEURO
+        - GUIDECAS
+        - INTERNAL
+        - INTERNALDB
+        - NOAUTH
+      - in: query
+        name: cartoAppStatus
+        description: Search filter for Status
+        type: string
+        required: false
+        enum:
+        - INPROG
+        - LIVE
+        - OGDECOM
+        - DECOM
+        - BSTOP
+      - in: query
+        name: cartoAppM2c
+        description: Search filter for Move2Cloud
+        type: string
+        required: false
+        enum:
+        - A
+        - B
+        - C
+        - D
+      - in: query
+        name: cartoAppTypeDev
+        description: Search filter for Type of development
+        type: string
+        required: false
+        enum:
+        - INHOUSE
+        - CSP
+        - OUTDEV
+        - INANDOUT
+      - in: query
+        name: cartoAppCloudModelService
+        description: Search filter for Cloud Model Service
+        type: string
+        required: false
+        enum:
+        - OP
+        - SAAS
+        - PAAS
+        - IAAS
+      - in: query
+        name: cartoAppBusId
+        description: Search filter for Business
+        type: string
+        required: false
+      - in: query
+        name: cartoAppBusId__cartoBusName
+        description: Search filter for Business Name
+        type: string
+        required: false
+      - in: query
+        name: cartoAppBusId__cartoBusBuscatId
+        description: Search filter for Business Business Category
+        type: string
+        required: false
+      - in: query
+        name: cartoAppDomId
+        description: Search filter for IT Domain
+        type: string
+        required: false
+      - in: query
+        name: cartoAppDomId__cartoDomName
+        description: Search filter for IT Domain Name
+        type: string
+        required: false
+      - in: query
+        name: cartoParentAppId
+        description: Search filter for Application
+        type: string
+        required: false
+      - in: query
+        name: cartoParentAppId__cartoAppId
+        description: Search filter for Application Identifier
+        type: string
+        required: false
+      - in: query
+        name: cartoParentAppId__cartoAppName
+        description: Search filter for Application Name
+        type: string
+        required: false
+      - in: query
+        name: cartoAppTraceability
+        description: Search filter for Traceability
+        type: string
+        required: false
+        enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+      - in: query
+        name: cartoAppHostingType
+        description: Search filter for Hosting Type
+        type: string
+        required: false
+        enum:
+        - E
+        - I
+        - S
+      - in: query
+        name: cartoAppHostingProvider
+        description: Search filter for Hosting Provider
+        type: string
+        required: false
+      tags:
+      - CartoApplication
+  /rest/CartoCmpTech:
+    get:
+      summary: Search CartoCmpTech business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocmptech-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoCmpTech'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoCmptechTechId
+        description: Search filter for Technology ID
+        type: string
+        required: false
+      - in: query
+        name: cartoCmptechTechId__cartoTechName
+        description: Search filter for Technology name
+        type: string
+        required: false
+      - in: query
+        name: cartoCmptechTechId__cartoTechVersion
+        description: Search filter for Technology version
+        type: string
+        required: false
+      - in: query
+        name: cartoCmptechCmpId
+        description: Search filter for Component
+        type: string
+        required: false
+      - in: query
+        name: cartoCmptechCmpId__cartoCmpAppId
+        description: Search filter for Component Application
+        type: string
+        required: false
+      - in: query
+        name: cartoCmptechCmpId__cartoCmpAppId__cartoAppId
+        description: Search filter for Application ID
+        type: string
+        required: false
+      - in: query
+        name: cartoCmptechCmpId__cartoCmpAppId__cartoAppName
+        description: Search filter for Application name
+        type: string
+        required: false
+      - in: query
+        name: cartoCmptechCmpId__cartoCmpName
+        description: Search filter for Component Name
+        type: string
+        required: false
+      tags:
+      - CartoCmpTech
+  /rest/CartoCmpSrv:
+    get:
+      summary: Search CartoCmpSrv business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartocmpsrv-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoCmpSrv'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoCmpsrvCmpId
+        description: Search filter for Component ID
+        type: string
+        required: false
+      - in: query
+        name: cartoCmpsrvCmpId__cartoCmpAppId
+        description: Search filter for Component ID Application
+        type: string
+        required: false
+      - in: query
+        name: cartoCmpsrvCmpId__cartoCmpAppId__cartoAppId
+        description: Search filter for Application ID
+        type: string
+        required: false
+      - in: query
+        name: cartoCmpsrvCmpId__cartoCmpName
+        description: Search filter for Component Name
+        type: string
+        required: false
+      - in: query
+        name: cartoCmpsrvSrvId
+        description: Search filter for Server ID
+        type: string
+        required: false
+      - in: query
+        name: cartoCmpsrvSrvId__cartoSrvName
+        description: Search filter for Server Name
+        type: string
+        required: false
+      tags:
+      - CartoCmpSrv
+  /rest/CartoBusiness/{row_id}:
+    post:
+      summary: Create a new CartoBusinessbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusiness-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoBusiness'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoBusiness'
+        in: body
+        name: body
+      tags:
+      - CartoBusiness
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoBusiness business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusiness-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoBusiness'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoBusiness
+    delete:
+      summary: Delete a CartoBusiness business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusiness-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoBusiness
+    put:
+      summary: Update a CartoBusinessbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusiness-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoBusiness'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoBusiness'
+        in: body
+        name: body
+      tags:
+      - CartoBusiness
+      consumes:
+      - application/json
+  /rest/CartoBusinessCategory:
+    get:
+      summary: Search CartoBusinessCategory business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartobusinesscategory-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoBusinessCategory'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoBuscatName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      tags:
+      - CartoBusinessCategory
+  /rest/CartoCtyApp/{row_id}:
+    post:
+      summary: Create a new CartoCtyAppbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoctyapp-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCtyApp'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoCtyApp'
+        in: body
+        name: body
+      tags:
+      - CartoCtyApp
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoCtyApp business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoctyapp-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCtyApp'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoCtyApp
+    delete:
+      summary: Delete a CartoCtyApp business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoctyapp-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoCtyApp
+    put:
+      summary: Update a CartoCtyAppbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoctyapp-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoCtyApp'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoCtyApp'
+        in: body
+        name: body
+      tags:
+      - CartoCtyApp
+      consumes:
+      - application/json
+  /rest/CartoActivity/{row_id}:
+    post:
+      summary: Create a new CartoActivitybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoactivity-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoActivity'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoActivity'
+        in: body
+        name: body
+      tags:
+      - CartoActivity
+      consumes:
+      - application/json
+    get:
+      summary: Get a CartoActivity business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoactivity-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoActivity'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - CartoActivity
+    delete:
+      summary: Delete a CartoActivity business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoactivity-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - CartoActivity
+    put:
+      summary: Update a CartoActivitybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoactivity-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/CartoActivity'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/CartoActivity'
+        in: body
+        name: body
+      tags:
+      - CartoActivity
+      consumes:
+      - application/json
+  /rest/CartoServer:
+    get:
+      summary: Search CartoServer business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-cartoserver-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfCartoServer'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: cartoSrvName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: cartoSrvType
+        description: Search filter for Type
+        type: string
+        required: false
+        enum:
+        - BDD
+        - PRES
+        - APP
+      - in: query
+        name: cartoSrvCategory
+        description: Search filter for Category
+        type: string
+        required: false
+        enum:
+        - PROD
+        - DEV
+        - REC
+        - UAT
+      tags:
+      - CartoServer
+securityDefinitions:
+  basicAuth:
+    type: basic
+  bearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+definitions:
+  ArrayOfCartoAppFct:
+    type: array
+    items:
+      $ref: '#/definitions/CartoAppFct'
+  PlaceData:
+    type: object
+    properties:
+      coord:
+        description: Geographical coordinates
+        type: string
+      address:
+        description: Address
+        type: string
+      row_id:
+        description: Row ID
+        type: string
+      label1:
+        description: 'Label #1'
+        type: string
+      label2:
+        description: 'Label #2'
+        type: string
+      label3:
+        description: 'Label #3'
+        type: string
+  PlaceMapData:
+    type: object
+    properties:
+      places:
+        description: Places
+        type: array
+        items:
+          $ref: '#/definitions/PlaceData'
+      name:
+        description: Name
+        type: string
+  CartoAppUsr:
+    type: object
+    properties:
+      cartoAppusrUsrId:
+        description: ID User
+        type: string
+      cartoAppusrAppId:
+        description: ID Application
+        type: string
+      cartoAppusrRole:
+        description: Role
+        type: string
+        enum:
+        - SPOC
+        - PO
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoAppusrAppId__cartoAppId:
+        description: Application Identifier
+        type: string
+      cartoAppusrUsrId__usr_login:
+        description: Login
+        type: string
+  CartoBusinessConcept:
+    type: object
+    properties:
+      cartoBusconKdId:
+        description: Key Data
+        type: string
+      cartoDescription:
+        description: Description
+        type: string
+      cartoBusconName:
+        description: Name
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoBusconKdId__cartoKdName:
+        description: Key Data Name
+        type: string
+  ArrayOfCartoCountry:
+    type: array
+    items:
+      $ref: '#/definitions/CartoCountry'
+  CartoCtyApp:
+    type: object
+    properties:
+      cartoCtyappAppId:
+        description: App ID
+        type: string
+      cartoCtyappCtyId:
+        description: Country ID
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoCtyappCtyId__cartoCtyName:
+        description: Country ID Name
+        type: string
+      cartoCtyappAppId__cartoAppId:
+        description: App ID Identifier
+        type: string
+  Error500:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 500
+  ArrayOfCartoBusinessConcept:
+    type: array
+    items:
+      $ref: '#/definitions/CartoBusinessConcept'
+  CartoApplication:
+    type: object
+    properties:
+      cartoAppPersonalData:
+        description: Personal data
+        type: boolean
+      cartoAppCiatLast:
+        description: Last CIAT
+        type: string
+        example: yyyy-MM-dd
+      cartoAppCloudModelService:
+        description: Cloud Model Service
+        type: string
+        enum:
+        - OP
+        - SAAS
+        - PAAS
+        - IAAS
+      cartoAppCiatAvailability:
+        description: Availability
+        type: string
+        enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+      cartoParentAppId__cartoAppName:
+        description: Application Name
+        type: string
+      cartoAppVersion:
+        description: Version
+        type: string
+      cartoAppInternetFacing:
+        description: Internet facing
+        type: boolean
+      cartoAppDescription:
+        description: Description
+        type: string
+      cartoAppM2c:
+        description: Move2Cloud
+        type: string
+        enum:
+        - A
+        - B
+        - C
+        - D
+      cartoAppCiatIntegrity:
+        description: Integrity
+        type: string
+        enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+      cartoAppTypeDev:
+        description: Type of development
+        type: string
+        enum:
+        - INHOUSE
+        - CSP
+        - OUTDEV
+        - INANDOUT
+      cartoAppRto:
+        description: RTO
+        type: string
+        enum:
+        - MORE24
+        - 8TO24
+        - 4TO8
+        - LESS4
+      cartoAppDomId__cartoDomName:
+        description: IT Domain Name
+        type: string
+      cartoAppRpo:
+        description: RPO
+        type: string
+        enum:
+        - MORE24
+        - 8TO24
+        - 4TO8
+        - LESS4
+      cartoAppName:
+        description: Name
+        type: string
+      cartoAppClass:
+        description: Class
+        type: string
+        enum:
+        - '1'
+        - '2'
+        - '3'
+      cartoAppStatus:
+        description: Status
+        type: string
+        enum:
+        - INPROG
+        - LIVE
+        - OGDECOM
+        - DECOM
+        - BSTOP
+      cartoAppId:
+        description: Identifier
+        type: string
+      cartoAppBusId:
+        description: Business
+        type: string
+      cartoAppTraceability:
+        description: Traceability
+        type: string
+        enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+      cartoAppHostingProvider:
+        description: Hosting Provider
+        type: string
+      cartoAppBusId__cartoBusName:
+        description: Business Name
+        type: string
+      cartoParentAppId__cartoAppId:
+        description: Application Identifier
+        type: string
+      cartoAppHostingType:
+        description: Hosting Type
+        type: string
+        enum:
+        - E
+        - I
+        - S
+      cartoAppCiatConf:
+        description: Confidentiality
+        type: string
+        enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+      cartoAppBusId__cartoBusBuscatId:
+        description: Business Business Category
+        type: string
+      cartoAppDomId:
+        description: IT Domain
+        type: string
+      cartoAppAuthentication:
+        description: Authentication
+        type: string
+        enum:
+        - SSO
+        - SSOITG
+        - SSOCIB
+        - ADFSBNPPRE
+        - ADFSEURO
+        - GUIDECAS
+        - INTERNAL
+        - INTERNALDB
+        - NOAUTH
+      cartoParentAppId:
+        description: Application
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+  CartoCountry:
+    type: object
+    properties:
+      cartoCtyName:
+        description: Name
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+  ArrayOfCartoFctAct:
+    type: array
+    items:
+      $ref: '#/definitions/CartoFctAct'
+  CartoFunction:
+    type: object
+    properties:
+      cartoDescription:
+        description: Description
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoFctName:
+        description: Name
+        type: string
+  ArrayOfCartoBusiness:
+    type: array
+    items:
+      $ref: '#/definitions/CartoBusiness'
+  CartoTechnology:
+    type: object
+    properties:
+      cartoTechEos:
+        description: EOS
+        type: string
+        example: yyyy-MM-dd
+      cartoDescription:
+        description: Description
+        type: string
+      cartoTechVersion:
+        description: Version
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoTechName:
+        description: Name
+        type: string
+  ArrayOfCartoCmpTech:
+    type: array
+    items:
+      $ref: '#/definitions/CartoCmpTech'
+  ArrayOfCartoCmpSrv:
+    type: array
+    items:
+      $ref: '#/definitions/CartoCmpSrv'
+  ArrayOfCartoActivity:
+    type: array
+    items:
+      $ref: '#/definitions/CartoActivity'
+  ActionResult:
+    type: object
+    properties:
+      result:
+        description: Action result
+        type: string
+  ArrayOfCartoItDomain:
+    type: array
+    items:
+      $ref: '#/definitions/CartoItDomain'
+  CartoServer:
+    type: object
+    properties:
+      cartoSrvName:
+        description: Name
+        type: string
+      cartoSrvType:
+        description: Type
+        type: string
+        enum:
+        - BDD
+        - PRES
+        - APP
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoSrvCategory:
+        description: Category
+        type: string
+        enum:
+        - PROD
+        - DEV
+        - REC
+        - UAT
+  ArrayOfCartoCtyApp:
+    type: array
+    items:
+      $ref: '#/definitions/CartoCtyApp'
+  CartoAppBuscon:
+    type: object
+    properties:
+      cartoAppbusconBusconId__cartoBusconName:
+        description: Business concept name
+        type: string
+      cartoAppbusconAppId__cartoAppName:
+        description: Name of the application
+        type: string
+      cartoAppbusconAppId__cartoAppId:
+        description: Application Identifier
+        type: string
+      cartoAppbusconBusconId:
+        description: ID Business concept
+        type: string
+      cartoAppbusconBusconId__cartoBusconKdId__cartoKdName:
+        description: ID Business concept Key Data Name
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoAppbusconType:
+        description: Type
+        type: string
+        enum:
+        - PRN
+        - SCN
+      cartoAppbusconBusconId__cartoBusconKdId:
+        description: ID Business concept Key Data
+        type: string
+      cartoAppbusconAppId:
+        description: ID Application
+        type: string
+  Error404:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 404
+  ArrayOfCartoBusinessCategory:
+    type: array
+    items:
+      $ref: '#/definitions/CartoBusinessCategory'
+  ArrayOfCartoApplication:
+    type: array
+    items:
+      $ref: '#/definitions/CartoApplication'
+  ArrayOfCartoUser:
+    type: array
+    items:
+      $ref: '#/definitions/CartoUser'
+  CartoAppFct:
+    type: object
+    properties:
+      cartoAppfctAppId:
+        description: Application ID
+        type: string
+      cartoAppfctFctId__cartoFctName:
+        description: Function name
+        type: string
+      cartoAppfctFctId:
+        description: Function ID
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoAppfctAppId__cartoAppId:
+        description: Application ID
+        type: string
+  CartoComponent:
+    type: object
+    properties:
+      cartoCmpAppId__cartoAppName:
+        description: Application Name
+        type: string
+      cartoCmpAppId:
+        description: Application
+        type: string
+      cartoCmpName:
+        description: Name
+        type: string
+      cartoDescription:
+        description: Description
+        type: string
+      cartoCmpAppId__cartoAppId:
+        description: Application Identifier
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+  PublicationResult:
+    type: object
+    properties:
+      mime:
+        description: MIME type
+        type: string
+      content:
+        description: Content (plain text or base64 encoded)
+        type: string
+  CartoBusinessCategory:
+    type: object
+    properties:
+      cartoBuscatName:
+        description: Name
+        type: string
+      cartoDescription:
+        description: Description
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+  ArrayOfCartoTechnology:
+    type: array
+    items:
+      $ref: '#/definitions/CartoTechnology'
+  CartoActivity:
+    type: object
+    properties:
+      cartoDescription:
+        description: Description
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoActName:
+        description: Name
+        type: string
+  CartoItDomain:
+    type: object
+    properties:
+      cartoDomName:
+        description: Name
+        type: string
+      cartoDescription:
+        description: Description
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+  Error400:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 400
+  Error401:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 401
+  Error403:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 403
+  CartoCmpTech:
+    type: object
+    properties:
+      cartoCmptechTechId__cartoTechVersion:
+        description: Technology version
+        type: string
+      cartoCmptechCmpId:
+        description: Component
+        type: string
+      cartoCmptechTechId__cartoTechName:
+        description: Technology name
+        type: string
+      cartoCmptechCmpId__cartoCmpAppId__cartoAppName:
+        description: Application name
+        type: string
+      cartoCmptechTechId:
+        description: Technology ID
+        type: string
+      cartoCmptechCmpId__cartoCmpAppId:
+        description: Component Application
+        type: string
+      cartoCmptechCmpId__cartoCmpAppId__cartoAppId:
+        description: Application ID
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoCmptechCmpId__cartoCmpName:
+        description: Component Name
+        type: string
+  ArrayOfCartoServer:
+    type: array
+    items:
+      $ref: '#/definitions/CartoServer'
+  CartoUser:
+    type: object
+    properties:
+      row_module_id__mdl_name:
+        description: Module name
+        type: string
+      usr_image_id:
+        description: Picture
+        type: object
+      usr_email:
+        description: Email address
+        type: string
+      usr_active:
+        description: Active
+        type: string
+        enum:
+        - '0'
+        - '1'
+        - '2'
+        - '3'
+      row_module_id:
+        description: Module
+        type: string
+      usr_login:
+        description: Login
+        type: string
+      usr_home_id__viw_name:
+        description: Home page Name
+        type: string
+      usr_last_name:
+        description: Last name
+        type: string
+      usr_cell_num:
+        description: Mobile/cellular phone number
+        type: string
+      usr_lang:
+        description: Language
+        type: string
+        enum:
+        - ENU
+        - FRA
+      row_id:
+        description: Unique technical row ID
+        type: string
+      usr_home_id:
+        description: Home page
+        type: string
+      usr_first_name:
+        description: First name
+        type: string
+  ArrayOfCartoFunction:
+    type: array
+    items:
+      $ref: '#/definitions/CartoFunction'
+  CartoFctAct:
+    type: object
+    properties:
+      cartoFctactActId:
+        description: Activity ID
+        type: string
+      cartoFctactFctId:
+        description: Function ID
+        type: string
+      cartoFctactFctId__cartoFctName:
+        description: Function name
+        type: string
+      cartoFctactActId__cartoActName:
+        description: Activity name
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+  CartoBusiness:
+    type: object
+    properties:
+      cartoBusName:
+        description: Name
+        type: string
+      cartoBusBuscatId__cartoBuscatName:
+        description: Business Category Name
+        type: string
+      cartoDescription:
+        description: Description
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoBusBuscatId:
+        description: Business Category
+        type: string
+  CartoCmpSrv:
+    type: object
+    properties:
+      cartoCmpsrvCmpId__cartoCmpAppId__cartoAppId:
+        description: Application ID
+        type: string
+      cartoCmpsrvCmpId:
+        description: Component ID
+        type: string
+      cartoCmpsrvCmpId__cartoCmpName:
+        description: Component Name
+        type: string
+      cartoCmpsrvSrvId:
+        description: Server ID
+        type: string
+      cartoCmpsrvSrvId__cartoSrvName:
+        description: Server Name
+        type: string
+      cartoCmpsrvCmpId__cartoCmpAppId:
+        description: Component ID Application
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+  CartoKeyData:
+    type: object
+    properties:
+      cartoDescription:
+        description: Description
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      cartoKdName:
+        description: Name
+        type: string
+  ArrayOfCartoComponent:
+    type: array
+    items:
+      $ref: '#/definitions/CartoComponent'
+  ArrayOfCartoAppUsr:
+    type: array
+    items:
+      $ref: '#/definitions/CartoAppUsr'
+  ArrayOfCartoAppBuscon:
+    type: array
+    items:
+      $ref: '#/definitions/CartoAppBuscon'
+  TreeviewData:
+    type: object
+    properties:
+      item:
+        description: Object item with lists of linked objects' items
+        type: object
+  ArrayOfCartoKeyData:
+    type: array
+    items:
+      $ref: '#/definitions/CartoKeyData'
+swagger: '2.0'
+info:
+  license:
+    name: Simplicite license
+    url: http://www.simplicitesoftware.com
+  contact:
+    name: Simplicite Software
+    url: http://www.simplicitesoftware.com
+    email: contact@simplicitesoftware.com
+  description: API for module CARTO
+  title: CARTO
+  version: '1.2'
+tags:
+- name: CartoActivity
+  description: Activity
+- name: CartoAppBuscon
+  description: Application Business Concept
+- name: CartoAppFct
+  description: Application function
+- name: CartoApplication
+  description: Application
+- name: CartoAppUsr
+  description: Linked application
+- name: CartoBusiness
+  description: Business
+- name: CartoBusinessCategory
+  description: Business category
+- name: CartoBusinessConcept
+  description: Business concept
+- name: CartoCmpSrv
+  description: Component hosting
+- name: CartoCmpTech
+  description: Technology used
+- name: CartoComponent
+  description: Component
+- name: CartoCountry
+  description: Country
+- name: CartoCtyApp
+  description: Application / Country
+- name: CartoFctAct
+  description: Function Activity
+- name: CartoFunction
+  description: Function
+- name: CartoItDomain
+  description: IT Domain
+- name: CartoKeyData
+  description: Key Data
+- name: CartoServer
+  description: Server
+- name: CartoTechnology
+  description: Technology
+- name: CartoUser
+  description: User
