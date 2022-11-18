@@ -14582,6 +14582,75 @@
    ]
   },
   {
+   "object": "ObjectExternal",
+   "label": "External objects",
+   "icon": "img/system/external_object",
+   "field": "row_module_id",
+   "list": [{
+    "object": "ObjectExternal",
+    "userkey": "CartoPublication",
+    "item": {
+     "obe_name": "CartoPublication",
+     "obe_type": "E",
+     "obe_url": null,
+     "obe_comment": null,
+     "obe_help": null,
+     "obe_class": null,
+     "obe_script_id": {
+      "path": "src/com/simplicite/extobjects/CARTO/CartoPublication.java",
+      "size": 1622,
+      "field": "obe_script_id",
+      "mime": "text/plain",
+      "name": "CartoPublication.java",
+      "id": "8310",
+      "object": "ObjectExternal",
+      "rowid": "2036"
+     },
+     "obe_icon": null,
+     "row_module_id__mdl_name": "CARTO"
+    },
+    "links": [{
+     "object": "Function",
+     "label": "Function",
+     "icon": "img/system/function",
+     "field": "fct_object_id",
+     "list": [{
+      "object": "Function",
+      "userkey": "CARTO_PUBLICATION_E",
+      "item": {
+       "fct_name": "CARTO_PUBLICATION_E",
+       "fct_object_id__obj_type": "E",
+       "fct_object_id__obj_name": "CartoPublication",
+       "fct_function": "L",
+       "fct_action_id__act_name": null,
+       "fct_view_id__viw_name": null,
+       "row_module_id__mdl_name": "CARTO"
+      },
+      "links": [{
+       "object": "Grant",
+       "label": "Grant",
+       "icon": "img/system/grant",
+       "field": "grt_function_id",
+       "list": [{
+        "object": "Grant",
+        "userkey": "ADMIN~CARTO_PUBLICATION_E~CartoPublication~",
+        "item": {
+         "grt_group_id__grp_name": "ADMIN",
+         "grt_function_id__fct_name": "CARTO_PUBLICATION_E",
+         "grt_function_id__fct_object_id__obj_type": "E",
+         "grt_function_id__fct_object_id__obj_name": "CartoPublication",
+         "grt_function_id__fct_action_id__act_name": null,
+         "grt_function_id__fct_function": "L",
+         "grt_activ": true,
+         "row_module_id__mdl_name": "CARTO"
+        }
+       }]
+      }]
+     }]
+    }]
+   }]
+  },
+  {
    "object": "Domain",
    "label": "Domains",
    "icon": "img/system/domain",
@@ -20157,6 +20226,117 @@
    "icon": "img/system/resource",
    "field": "row_module_id",
    "list": [
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(CartoPublication)~ANY~STYLES",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "CartoPublication"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "row_id": "2036",
+       "userkeylabel": "CartoPublication",
+       "object": "ObjectExternal"
+      },
+      "res_type": "CSS",
+      "res_lang": "ANY",
+      "res_code": "STYLES",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/CartoPublication/STYLES.less",
+       "size": 530,
+       "field": "res_file",
+       "mime": "text/less",
+       "name": "CartoPublication.less",
+       "id": "8360",
+       "object": "Resource",
+       "rowid": "293"
+      },
+      "res_file_compiled": {
+       "path": "resources/ObjectExternal/CartoPublication/STYLES.min.css",
+       "size": 357,
+       "field": "res_file_compiled",
+       "mime": "text/css",
+       "name": "CartoPublication.min.css",
+       "id": "8377",
+       "object": "Resource",
+       "rowid": "293"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "CARTO"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(CartoPublication)~ANY~HTML",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "CartoPublication"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "row_id": "2036",
+       "userkeylabel": "CartoPublication",
+       "object": "ObjectExternal"
+      },
+      "res_type": "HTML",
+      "res_lang": "ANY",
+      "res_code": "HTML",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/CartoPublication/HTML.html",
+       "size": 167,
+       "field": "res_file",
+       "mime": "text/html",
+       "name": "CartoPublication.html",
+       "id": "8372",
+       "object": "Resource",
+       "rowid": "291"
+      },
+      "res_file_compiled": null,
+      "res_image": null,
+      "row_module_id__mdl_name": "CARTO"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(CartoPublication)~ANY~SCRIPT",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "CartoPublication"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "row_id": "2036",
+       "userkeylabel": "CartoPublication",
+       "object": "ObjectExternal"
+      },
+      "res_type": "JS",
+      "res_lang": "ANY",
+      "res_code": "SCRIPT",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/CartoPublication/SCRIPT.js",
+       "size": 1583,
+       "field": "res_file",
+       "mime": "text/javascript",
+       "name": "CartoPublication.js",
+       "id": "8374",
+       "object": "Resource",
+       "rowid": "292"
+      },
+      "res_file_compiled": {
+       "path": "resources/ObjectExternal/CartoPublication/SCRIPT.min.js",
+       "size": 915,
+       "field": "res_file_compiled",
+       "mime": "text/javascript",
+       "name": "CartoPublication.min.js",
+       "id": "8378",
+       "object": "Resource",
+       "rowid": "292"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "CARTO"
+     }
+    },
     {
      "object": "Resource",
      "userkey": "ObjectInternal(CartoApplication)~ANY~REPORT",

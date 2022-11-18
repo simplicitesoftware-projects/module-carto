@@ -412,3 +412,9 @@
 | `usr_last_name`                                              | char(50)                                 |          | yes       | yes      | Last name                                                                        |
 | `usr_email`                                                  | email(100)                               |          | yes       | yes      | Email address                                                                    |
 
+`CartoPublication` external object definition
+---------------------------------------------
+
+
+
+
