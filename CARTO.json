@@ -944,7 +944,7 @@
           "obf_fld_listmore": null,
           "obf_fld_researchreq": null,
           "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": "[EXPR:Tool.format(\"A%06d\", Long.valueOf([ROWID]))]",
+          "obf_field_id__fld_dfault": null,
           "obf_area_id__ofa_name": "CartoAppBuscon-2",
           "obf_area_id__ofa_position": 2,
           "row_module_id__mdl_name": "CARTO"
@@ -1022,7 +1022,7 @@
              "fld_minsize": null,
              "fld_precision": null,
              "fld_fromdate_id__fld_name": null,
-             "fld_dfault": "[EXPR:Tool.format(\"A%06d\", Long.valueOf([ROWID]))]",
+             "fld_dfault": null,
              "fld_indexable": false,
              "fld_autocomp": "0",
              "fld_groupby": false,
@@ -2132,7 +2132,7 @@
           "obf_fld_listmore": null,
           "obf_fld_researchreq": null,
           "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": "[EXPR:Tool.format(\"A%06d\", Long.valueOf([ROWID]))]",
+          "obf_field_id__fld_dfault": null,
           "obf_area_id__ofa_name": "CartoAppFct-1",
           "obf_area_id__ofa_position": 1,
           "row_module_id__mdl_name": "CARTO"
@@ -2552,11 +2552,11 @@
       "obo_class": null,
       "obo_script_id": {
        "path": "src/com/simplicite/objects/CARTO/CartoApplication.java",
-       "size": 271,
+       "size": 1269,
        "field": "obo_script_id",
        "mime": "text/plain",
        "name": "CartoApplication.java",
-       "id": "3829",
+       "id": "8376",
        "object": "ObjectInternal",
        "rowid": "2014"
       },
@@ -2691,7 +2691,7 @@
           "obf_fld_listmore": null,
           "obf_fld_researchreq": null,
           "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": "[EXPR:Tool.format(\"A%06d\", Long.valueOf([ROWID]))]",
+          "obf_field_id__fld_dfault": null,
           "obf_area_id__ofa_name": "CartoApplication-1",
           "obf_area_id__ofa_position": 1,
           "row_module_id__mdl_name": "CARTO"
@@ -5447,7 +5447,7 @@
           "obf_fld_listmore": null,
           "obf_fld_researchreq": null,
           "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": "[EXPR:Tool.format(\"A%06d\", Long.valueOf([ROWID]))]",
+          "obf_field_id__fld_dfault": null,
           "obf_area_id__ofa_name": "CartoApplication-8",
           "obf_area_id__ofa_position": 8,
           "row_module_id__mdl_name": "CARTO"
@@ -5891,6 +5891,126 @@
            }]
           }]
          }]
+        },
+        {
+         "object": "ObjectFieldSystem",
+         "userkey": "CartoApplication~cartoAppChartBase~560",
+         "item": {
+          "obf_object_id__obo_name": "CartoApplication",
+          "obf_field_id__fld_name": "cartoAppChartBase",
+          "obf_field_id__fld_type": "13",
+          "obf_order": 560,
+          "obf_group_by": null,
+          "obf_dfault_order": null,
+          "obf_input": null,
+          "obf_ref_field_id__fld_name": null,
+          "obf_ref_object_id__obo_name": null,
+          "obf_cascad": null,
+          "obf_card": null,
+          "obf_visible": null,
+          "obf_ref_export": true,
+          "obf_copy": null,
+          "obf_ref_order": null,
+          "obf_fld_visible": null,
+          "obf_fld_required": null,
+          "obf_fld_updatable": null,
+          "obf_fld_research": null,
+          "obf_fld_more": null,
+          "obf_fld_listmore": null,
+          "obf_fld_researchreq": null,
+          "obf_fld_dfault": null,
+          "obf_field_id__fld_dfault": null,
+          "obf_area_id__ofa_name": "CartoApplication-3",
+          "obf_area_id__ofa_position": 3,
+          "row_module_id__mdl_name": "CARTO"
+         },
+         "links": [{
+          "object": "Field",
+          "label": "Field",
+          "icon": "img/system/field",
+          "field": "",
+          "list": [{
+           "object": "Field",
+           "userkey": "cartoAppChartBase",
+           "item": {
+            "fld_name": "cartoAppChartBase",
+            "fld_dbname": "carto_app_chart_base",
+            "fld_visible": "3",
+            "fld_updatable": "1",
+            "fld_required": false,
+            "fld_fonctid": false,
+            "fld_research": "1",
+            "fld_researchreq": "0",
+            "fld_sort": "C",
+            "fld_more": false,
+            "fld_listmore": false,
+            "fld_listsum": null,
+            "fld_tray": null,
+            "fld_type": "13",
+            "fld_type_id__flt_code": null,
+            "fld_list_id__lov_name": null,
+            "fld_copy": true,
+            "fld_size": 1000000,
+            "fld_minsize": null,
+            "fld_precision": null,
+            "fld_fromdate_id__fld_name": null,
+            "fld_dfault": null,
+            "fld_indexable": false,
+            "fld_autocomp": "0",
+            "fld_groupby": false,
+            "fld_updall": true,
+            "fld_case": null,
+            "fld_righttoleft": false,
+            "fld_rendering": null,
+            "fld_speech": null,
+            "fld_calc": null,
+            "fld_objlist": null,
+            "fld_comment": null,
+            "fld_classification": null,
+            "row_module_id__mdl_name": "CARTO"
+           },
+           "links": [{
+            "object": "TranslateField",
+            "label": "Field translation",
+            "icon": "img/system/translation",
+            "field": "tsl_id",
+            "list": [
+             {
+              "object": "TranslateField",
+              "userkey": "F~cartoAppChartBase~ENU",
+              "item": {
+               "tsl_typeField": "F",
+               "tsl_id__fld_name": "cartoAppChartBase",
+               "tsl_lang": "ENU",
+               "tsl_value": "cartoAppChartBase",
+               "tsl_simplehelp": null,
+               "tsl_short_value": null,
+               "tsl_placeholder": null,
+               "tsl_listhelp": null,
+               "row_module_id__mdl_name": "CARTO",
+               "tsl_tooltip": null
+              }
+             },
+             {
+              "object": "TranslateField",
+              "userkey": "F~cartoAppChartBase~FRA",
+              "item": {
+               "tsl_typeField": "F",
+               "tsl_id__fld_name": "cartoAppChartBase",
+               "tsl_lang": "FRA",
+               "tsl_value": "Carto app chart base",
+               "tsl_simplehelp": null,
+               "tsl_short_value": null,
+               "tsl_placeholder": null,
+               "tsl_listhelp": null,
+               "row_module_id__mdl_name": "CARTO",
+               "tsl_tooltip": null
+              }
+             }
+            ]
+           }]
+          }]
+         }]
         }
        ]
       },
@@ -6222,6 +6342,102 @@
        "list": [
         {
          "object": "Function",
+         "userkey": "CARTO_APP_CARTO_PRINT_REPORT_A",
+         "item": {
+          "fct_name": "CARTO_APP_CARTO_PRINT_REPORT_A",
+          "fct_object_id__obj_type": "O",
+          "fct_object_id__obj_name": "CartoApplication",
+          "fct_function": "A",
+          "fct_action_id__act_name": "CartoPrintReport",
+          "fct_view_id__viw_name": null,
+          "row_module_id__mdl_name": "CARTO"
+         },
+         "links": [
+          {
+           "object": "Grant",
+           "label": "Grant",
+           "icon": "img/system/grant",
+           "field": "grt_function_id",
+           "list": [{
+            "object": "Grant",
+            "userkey": "CARTO_ADMIN~CARTO_APP_CARTO_PRINT_REPORT_A~CartoApplication~CartoPrintReport",
+            "item": {
+             "grt_group_id__grp_name": "CARTO_ADMIN",
+             "grt_function_id__fct_name": "CARTO_APP_CARTO_PRINT_REPORT_A",
+             "grt_function_id__fct_object_id__obj_type": "O",
+             "grt_function_id__fct_object_id__obj_name": "CartoApplication",
+             "grt_function_id__fct_action_id__act_name": "CartoPrintReport",
+             "grt_function_id__fct_function": "A",
+             "grt_activ": true,
+             "row_module_id__mdl_name": "CARTO"
+            }
+           }]
+          },
+          {
+           "object": "Action",
+           "label": "Action",
+           "icon": "img/system/action",
+           "field": "",
+           "list": [{
+            "object": "Action",
+            "userkey": "CartoPrintReport",
+            "item": {
+             "act_name": "CartoPrintReport",
+             "act_type": "O",
+             "act_async": "0",
+             "act_job_depth": null,
+             "act_method": null,
+             "act_script": null,
+             "act_url": "[EXPR:HTMLTool.getExternalObjectURL(\"CartoPublication\", \"id=\"+[ROWID]+\"\")]",
+             "act_image": null,
+             "act_confirm": false,
+             "act_confirm_expr": null,
+             "act_confirm_ui": null,
+             "act_plus": false,
+             "act_comment": null,
+             "row_module_id__mdl_name": "CARTO",
+             "act_exec": "FRT",
+             "act_count": null,
+             "act_order": null
+            },
+            "links": [{
+             "object": "TranslateAction",
+             "label": "Action translation",
+             "icon": "img/system/translation",
+             "field": "tsl_id",
+             "list": [
+              {
+               "object": "TranslateAction",
+               "userkey": "A~CartoPrintReport~ENU",
+               "item": {
+                "tsl_typeAction": "A",
+                "tsl_id__act_name": "CartoPrintReport",
+                "tsl_lang": "ENU",
+                "tsl_value": "Print report",
+                "tsl_simplehelp": null,
+                "row_module_id__mdl_name": "CARTO"
+               }
+              },
+              {
+               "object": "TranslateAction",
+               "userkey": "A~CartoPrintReport~FRA",
+               "item": {
+                "tsl_typeAction": "A",
+                "tsl_id__act_name": "CartoPrintReport",
+                "tsl_lang": "FRA",
+                "tsl_value": "Print report",
+                "tsl_simplehelp": null,
+                "row_module_id__mdl_name": "CARTO"
+               }
+              }
+             ]
+            }]
+           }]
+          }
+         ]
+        },
+        {
+         "object": "Function",
          "userkey": "CARTO_APP_CRUD",
          "item": {
           "fct_name": "CARTO_APP_CRUD",
@@ -6285,8 +6501,67 @@
            }
           }]
          }]
+        },
+        {
+         "object": "Function",
+         "userkey": "CARTO_APP_SAVE_CHART_A",
+         "item": {
+          "fct_name": "CARTO_APP_SAVE_CHART_A",
+          "fct_object_id__obj_type": "O",
+          "fct_object_id__obj_name": "CartoApplication",
+          "fct_function": "A",
+          "fct_action_id__act_name": "SAVE_CHART",
+          "fct_view_id__viw_name": null,
+          "row_module_id__mdl_name": "CARTO"
+         },
+         "links": [{
+          "object": "Grant",
+          "label": "Grant",
+          "icon": "img/system/grant",
+          "field": "grt_function_id",
+          "list": [{
+           "object": "Grant",
+           "userkey": "ADMIN~CARTO_APP_SAVE_CHART_A~CartoApplication~SAVE_CHART",
+           "item": {
+            "grt_group_id__grp_name": "ADMIN",
+            "grt_function_id__fct_name": "CARTO_APP_SAVE_CHART_A",
+            "grt_function_id__fct_object_id__obj_type": "O",
+            "grt_function_id__fct_object_id__obj_name": "CartoApplication",
+            "grt_function_id__fct_action_id__act_name": "SAVE_CHART",
+            "grt_function_id__fct_function": "A",
+            "grt_activ": true,
+            "row_module_id__mdl_name": "CARTO"
+           }
+          }]
+         }]
         }
        ]
+      },
+      {
+       "object": "PrintTemplate",
+       "label": "Publications",
+       "icon": "img/system/publication",
+       "field": "prt_object_id",
+       "list": [{
+        "object": "PrintTemplate",
+        "userkey": "Report~ANY",
+        "item": {
+         "prt_object_id__obo_name": "CartoApplication",
+         "prt_name": "Report",
+         "prt_usage": "O",
+         "prt_visible": "1",
+         "prt_grantable": false,
+         "row_module_id__mdl_name": "CARTO",
+         "prt_lang": "ANY",
+         "prt_translation": "REPORT",
+         "prt_filename": null,
+         "prt_mimetype": null,
+         "prt_type": "METH",
+         "prt_method": "createReport",
+         "prt_file": null,
+         "prt_template_id__tpl_name": null
+        }
+       }]
       },
       {
        "object": "Research",
@@ -6602,7 +6877,7 @@
           "obf_fld_listmore": null,
           "obf_fld_researchreq": null,
           "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": "[EXPR:Tool.format(\"A%06d\", Long.valueOf([ROWID]))]",
+          "obf_field_id__fld_dfault": null,
           "obf_area_id__ofa_name": "CartoAppUsr-1",
           "obf_area_id__ofa_position": 1,
           "row_module_id__mdl_name": "CARTO"
@@ -8525,7 +8800,7 @@
           "obf_fld_listmore": null,
           "obf_fld_researchreq": null,
           "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": "[EXPR:Tool.format(\"A%06d\", Long.valueOf([ROWID]))]",
+          "obf_field_id__fld_dfault": null,
           "obf_area_id__ofa_name": "CartoCmpSrv-1",
           "obf_area_id__ofa_position": 1,
           "row_module_id__mdl_name": "CARTO"
@@ -9821,7 +10096,7 @@
           "obf_fld_listmore": null,
           "obf_fld_researchreq": null,
           "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": "[EXPR:Tool.format(\"A%06d\", Long.valueOf([ROWID]))]",
+          "obf_field_id__fld_dfault": null,
           "obf_area_id__ofa_name": "CartoCmpTech-1",
           "obf_area_id__ofa_position": 1,
           "row_module_id__mdl_name": "CARTO"
@@ -10251,7 +10526,7 @@
           "obf_fld_listmore": null,
           "obf_fld_researchreq": null,
           "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": "[EXPR:Tool.format(\"A%06d\", Long.valueOf([ROWID]))]",
+          "obf_field_id__fld_dfault": null,
           "obf_area_id__ofa_name": "CartoComponent-2",
           "obf_area_id__ofa_position": 2,
           "row_module_id__mdl_name": "CARTO"
@@ -11336,7 +11611,7 @@
           "obf_fld_listmore": null,
           "obf_fld_researchreq": null,
           "obf_fld_dfault": null,
-          "obf_field_id__fld_dfault": "[EXPR:Tool.format(\"A%06d\", Long.valueOf([ROWID]))]",
+          "obf_field_id__fld_dfault": null,
           "obf_area_id__ofa_name": null,
           "obf_area_id__ofa_position": null,
           "row_module_id__mdl_name": "CARTO"
@@ -14675,6 +14950,18 @@
          "map_ext": false,
          "row_module_id__mdl_name": "CARTO"
         }
+       },
+       {
+        "object": "Map",
+        "userkey": "CartoMainDomain~1080",
+        "item": {
+         "map_domain_id__obd_name": "CartoMainDomain",
+         "map_object_id__obj_name": "CartoPublication",
+         "map_process_id__pcs_name": null,
+         "map_order": 1080,
+         "map_ext": false,
+         "row_module_id__mdl_name": "CARTO"
+        }
        }
       ]
      }
@@ -17987,7 +18274,7 @@
      "thm_base": "light",
      "thm_css_doc": {
       "path": "files/Theme/CARTOTheme/CARTOTheme_gen.css",
-      "size": 138571,
+      "size": 138961,
       "field": "thm_css_doc",
       "mime": "text/css",
       "name": "CARTOTheme_gen.css",
@@ -18693,7 +18980,7 @@
       "ofa_name": "CartoApplication-3",
       "ofa_position": 3,
       "ofa_title": true,
-      "ofa_ui": "<div>\n  <div class=\"field\" data-field=\"cartoAppCiatConf\"><\/div>\n  <div class=\"field\" data-field=\"cartoAppCiatIntegrity\"><\/div>\n  <div class=\"field\" data-field=\"cartoAppCiatAvailability\"><\/div>\n  <div class=\"field\" data-field=\"cartoAppTraceability\"><\/div>\n  <div class=\"field\" data-field=\"cartoAppCiatLast\"><\/div>\n  <div data-content=\"ciatChart\"><\/div>\n<\/div>",
+      "ofa_ui": "<div>\n  <div class=\"field\" data-field=\"cartoAppCiatConf\"><\/div>\n  <div class=\"field\" data-field=\"cartoAppCiatIntegrity\"><\/div>\n  <div class=\"field\" data-field=\"cartoAppCiatAvailability\"><\/div>\n  <div class=\"field\" data-field=\"cartoAppTraceability\"><\/div>\n  <div class=\"field\" data-field=\"cartoAppCiatLast\"><\/div>\n  <div class=\"field\" data-field=\"cartoAppChartBase\"><\/div>\n  <div data-content=\"ciatChart\"><\/div>\n<\/div>",
       "ofa_icon": "img/color/maintenance",
       "row_module_id__mdl_name": "CARTO"
      },
@@ -19869,46 +20156,79 @@
    "label": "Resources",
    "icon": "img/system/resource",
    "field": "row_module_id",
-   "list": [{
-    "object": "Resource",
-    "userkey": "ObjectInternal(CartoApplication)~ANY~SCRIPT",
-    "item": {
-     "res_object": {
-      "item": {"obo_name": "CartoApplication"},
-      "icon": "img/system/business_object",
-      "label": "Business object",
-      "row_id": "2014",
-      "userkeylabel": "CartoApplication",
-      "object": "ObjectInternal"
-     },
-     "res_type": "JS",
-     "res_lang": "ANY",
-     "res_code": "SCRIPT",
-     "res_cached": false,
-     "res_file": {
-      "path": "resources/ObjectInternal/CartoApplication/SCRIPT.js",
-      "size": 1945,
-      "field": "res_file",
-      "mime": "text/javascript",
-      "name": "script.js",
-      "id": "3936",
-      "object": "Resource",
-      "rowid": "275"
-     },
-     "res_file_compiled": {
-      "path": "resources/ObjectInternal/CartoApplication/SCRIPT.min.js",
-      "size": 984,
-      "field": "res_file_compiled",
-      "mime": "text/javascript",
-      "name": "script.min.js",
-      "id": "6888",
-      "object": "Resource",
-      "rowid": "275"
-     },
-     "res_image": null,
-     "row_module_id__mdl_name": "CARTO"
+   "list": [
+    {
+     "object": "Resource",
+     "userkey": "ObjectInternal(CartoApplication)~ANY~REPORT",
+     "item": {
+      "res_object": {
+       "item": {"obo_name": "CartoApplication"},
+       "icon": "img/system/business_object",
+       "label": "Business object",
+       "row_id": "2014",
+       "userkeylabel": "CartoApplication",
+       "object": "ObjectInternal"
+      },
+      "res_type": "HTML",
+      "res_lang": "ANY",
+      "res_code": "REPORT",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectInternal/CartoApplication/REPORT.html",
+       "size": 93,
+       "field": "res_file",
+       "mime": "text/html",
+       "name": "CartoApplication_REPORT.html",
+       "id": "8373",
+       "object": "Resource",
+       "rowid": "290"
+      },
+      "res_file_compiled": null,
+      "res_image": null,
+      "row_module_id__mdl_name": "CARTO"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectInternal(CartoApplication)~ANY~SCRIPT",
+     "item": {
+      "res_object": {
+       "item": {"obo_name": "CartoApplication"},
+       "icon": "img/system/business_object",
+       "label": "Business object",
+       "row_id": "2014",
+       "userkeylabel": "CartoApplication",
+       "object": "ObjectInternal"
+      },
+      "res_type": "JS",
+      "res_lang": "ANY",
+      "res_code": "SCRIPT",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectInternal/CartoApplication/SCRIPT.js",
+       "size": 2019,
+       "field": "res_file",
+       "mime": "text/javascript",
+       "name": "script.js",
+       "id": "7639",
+       "object": "Resource",
+       "rowid": "275"
+      },
+      "res_file_compiled": {
+       "path": "resources/ObjectInternal/CartoApplication/SCRIPT.min.js",
+       "size": 1080,
+       "field": "res_file_compiled",
+       "mime": "text/javascript",
+       "name": "script.min.js",
+       "id": "8333",
+       "object": "Resource",
+       "rowid": "275"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "CARTO"
+     }
     }
-   }]
+   ]
   },
   {
    "object": "ModelTemplate",

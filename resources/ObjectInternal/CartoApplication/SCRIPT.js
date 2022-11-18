@@ -9,14 +9,14 @@
 			var p = o.locals.ui;
 			if (p && o.isMainInstance()) {
 				p.form.onload = function(ctn, obj) {
-					
-					
+					obj.setFieldValue("cartoAppChartBase", "titi");
+					console.log(obj.getFieldValue("cartoAppChartBase"));
 					var c = obj.getFieldValue("cartoAppCiatConf");
 					var i = obj.getFieldValue("cartoAppCiatIntegrity");
 					var a = obj.getFieldValue("cartoAppCiatAvailability");
 					var t = obj.getFieldValue("cartoAppTraceability");
 					
-					var options = {
+					var config = {
                         type: 'radar',
                         data: {
                             labels: ["Confidentiality", "Integrity", "Availability", "Traceability"],
@@ -26,19 +26,19 @@
                                 backgroundColor: 'rgba(0, 0, 255, 0.5)'
                             }]
                         },
-                        options: {
-                            scale: {
-                                ticks: {
-                                    beginAtZero: true,
-                                    max: 4,
-                                    stepSize: 1
-                                }
-                            }
-                        }
+                        options : {
+	                        scale: {
+	                            ticks: {
+	                                beginAtZero: true,
+	                                max: 4,
+	                                stepSize: 1
+	                            }
+	                        }
+	                    }
                     }
 					$ui.loadCharts(function() {
                     	$("[data-content=ciatChart]").after('<div id="chart-container"></div>');
-						$ui.charts.chart($("#chart-container"), options);
+						$ui.charts.chart($("#chart-container"), config);
                       // $ui.charts.chart($("#radar-chart"), options);
                     });
 				};

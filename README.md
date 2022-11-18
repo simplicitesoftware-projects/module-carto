@@ -101,6 +101,7 @@
 | `cartoAppTraceability`                                       | enum(100) using `CARTOAPPTRACEABILITY` list |          | yes       |          | -                                                                                |
 | `cartoAppHostingType`                                        | enum(100) using `CARTOAPPHOSTINGTYPE` list |          | yes       |          | -                                                                                |
 | `cartoAppHostingProvider`                                    | char(255)                                |          | yes       |          | -                                                                                |
+| `cartoAppChartBase`                                          | text(1000000)                            |          | yes       |          | -                                                                                |
 
 ### Lists
 
@@ -168,6 +169,10 @@
     - `E` External
     - `I` Internal
     - `S` Subscription
+
+### Custom actions
+
+* `SAVE_CHART`: 
 
 `CartoAppUsr` business object definition
 ----------------------------------------

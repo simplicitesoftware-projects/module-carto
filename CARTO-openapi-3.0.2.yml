@@ -258,6 +258,9 @@ components:
           - '2'
           - '3'
           - '4'
+        cartoAppChartBase:
+          description: cartoAppChartBase
+          type: string
         cartoAppBusId__cartoBusBuscatId:
           description: Business Business Category
           type: string
@@ -4184,6 +4187,53 @@ paths:
         required: true
       tags:
       - CartoComponent
+  /rest/CartoApplication/{row_id}/action:SAVE_CHART:
+    get:
+      summary: Call a custom action for a CartoApplication business object record
+        or for all records
+      security:
+      - bearerAuth: []
+      operationId: obj-cartoapplication-action-save_chart
+      responses:
+        '200':
+          description: Success in calling the custom action
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - CartoApplication
   /rest/CartoBusinessConcept:
     get:
       summary: Search CartoBusinessConcept business object records or get contextualized
@@ -5541,6 +5591,12 @@ paths:
         name: cartoAppHostingProvider
         description: Search filter for Hosting Provider
         required: false
+      - schema:
+          type: string
+        in: query
+        name: cartoAppChartBase
+        description: Search filter for cartoAppChartBase
+        required: false
       tags:
       - CartoApplication
   /rest/CartoCmpTech:
@@ -6440,6 +6496,47 @@ paths:
         required: false
       tags:
       - CartoServer
+  /rest/CartoApplication/{row_id}/publication:Report:
+    get:
+      summary: Call a custom publication for a CartoApplication business object record
+        or for all records
+      security:
+      - bearerAuth: []
+      operationId: obj-cartoapplication-publication-report
+      responses:
+        '200':
+          description: Success in calling the custom publication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicationResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - CartoApplication
 info:
   license:
     name: Simplicite license
